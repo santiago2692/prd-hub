@@ -1,0 +1,251 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- Auth (NextAuth) ----------
+
+enum Role {
+  ADMIN // manage users + everything editors can do
+  EDITOR // create and edit projects, site maps, journeys
+  VIEWER // read and comment
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(VIEWER)
+  createdAt     DateTime  @default(now())
+
+  accounts      Account[]
+  sessions      Session[]
+  ownedProjects Project[]    @relation("ProjectOwner")
+  comments      Comment[]
+  attachments   Attachment[]
+  activities    Activity[]
+  sectionEdits  PrdSection[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ---------- Projects & PRDs ----------
+
+enum Stage {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  IN_BUILD
+  SHIPPED
+  PARKED
+}
+
+enum SectionStatus {
+  MISSING
+  DRAFT
+  NEEDS_INFO
+  NEEDS_DATA
+  NEEDS_VALIDATION
+  READY
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  title        String
+  summary      String   @default("") @db.Text
+  team         String   @default("")
+  stage        Stage    @default(DRAFT)
+  prototypeUrl String?
+  ownerId      String
+  owner        User     @relation("ProjectOwner", fields: [ownerId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  sections     PrdSection[]
+  attachments  Attachment[]
+  comments     Comment[]
+  activities   Activity[]
+  siteMapNodes SiteMapNode[]
+  journeys     Journey[]
+}
+
+/// One row per Cagan checklist item per project. `key` matches lib/cagan.ts.
+model PrdSection {
+  id          String        @id @default(cuid())
+  projectId   String
+  project     Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  key         String
+  content     String        @default("") @db.Text
+  status      SectionStatus @default(MISSING)
+  note        String        @default("") // what is still needed, in the author's words
+  updatedById String?
+  updatedBy   User?         @relation(fields: [updatedById], references: [id])
+  updatedAt   DateTime      @updatedAt
+
+  @@unique([projectId, key])
+}
+
+enum AttachmentKind {
+  FILE
+  LINK
+}
+
+/// Where an attachment belongs in the review: general evidence, a screenshot of today, or the 2028 vision.
+enum AttachmentContext {
+  GENERAL
+  TODAY
+  VISION
+}
+
+model Attachment {
+  id           String            @id @default(cuid())
+  projectId    String
+  project      Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sectionKey   String?
+  kind         AttachmentKind
+  context      AttachmentContext @default(GENERAL)
+  name         String
+  url          String? // for links
+  storageKey   String? // for uploaded files
+  mimeType     String?
+  size         Int?
+  uploadedById String
+  uploadedBy   User              @relation(fields: [uploadedById], references: [id])
+  createdAt    DateTime          @default(now())
+}
+
+model Comment {
+  id            String       @id @default(cuid())
+  body          String       @db.Text
+  authorId      String
+  author        User         @relation(fields: [authorId], references: [id])
+  resolved      Boolean      @default(false)
+  createdAt     DateTime     @default(now())
+
+  // A comment targets exactly one of these.
+  projectId     String?
+  project       Project?     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sectionKey    String? // with projectId: a comment on one PRD section
+  siteMapNodeId String?
+  siteMapNode   SiteMapNode? @relation(fields: [siteMapNodeId], references: [id], onDelete: Cascade)
+  journeyId     String?
+  journey       Journey?     @relation(fields: [journeyId], references: [id], onDelete: Cascade)
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  actorId   String
+  actor     User     @relation(fields: [actorId], references: [id])
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([projectId, createdAt])
+}
+
+// ---------- Site map & journeys ----------
+
+enum MapVersion {
+  TODAY
+  VISION
+}
+
+/// TODAY nodes: KEEP or REMOVE. VISION nodes: NEW, IMPROVED or UNCHANGED.
+enum NodeChange {
+  KEEP
+  REMOVE
+  NEW
+  IMPROVED
+  UNCHANGED
+}
+
+model SiteMapNode {
+  id           String        @id @default(cuid())
+  version      MapVersion
+  title        String
+  path         String        @default("")
+  description  String        @default("") @db.Text
+  change       NodeChange
+  order        Int           @default(0)
+  prototypeUrl String?
+  parentId     String?
+  parent       SiteMapNode?  @relation("Tree", fields: [parentId], references: [id], onDelete: Cascade)
+  children     SiteMapNode[] @relation("Tree")
+  /// For a VISION node: the TODAY node it replaces or improves.
+  counterpartId String?
+  counterpart   SiteMapNode?  @relation("Counterpart", fields: [counterpartId], references: [id], onDelete: SetNull)
+  successors    SiteMapNode[] @relation("Counterpart")
+  projects     Project[]
+  comments     Comment[]
+  steps        JourneyStep[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Journey {
+  id            String        @id @default(cuid())
+  title         String
+  persona       String        @default("")
+  version       MapVersion
+  figjamUrl     String?
+  /// For a VISION journey: the TODAY journey it replaces.
+  counterpartId String?
+  counterpart   Journey?      @relation("JourneyCounterpart", fields: [counterpartId], references: [id], onDelete: SetNull)
+  successors    Journey[]     @relation("JourneyCounterpart")
+  projects      Project[]
+  steps         JourneyStep[]
+  comments      Comment[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model JourneyStep {
+  id          String       @id @default(cuid())
+  journeyId   String
+  journey     Journey      @relation(fields: [journeyId], references: [id], onDelete: Cascade)
+  order       Int
+  title       String
+  description String       @default("") @db.Text
+  painPoint   String       @default("")
+  nodeId      String?
+  node        SiteMapNode? @relation(fields: [nodeId], references: [id], onDelete: SetNull)
+}
