@@ -1,0 +1,1943 @@
+{
+  "initiatives": {
+    "ex-checkout": {
+      "screens": {
+        "today": [],
+        "vision": []
+      },
+      "prototypeUrl": "",
+      "id": "ex-checkout",
+      "demo": "checkout",
+      "name": "One-page checkout",
+      "team": "Commerce",
+      "owner": "ex-ana",
+      "crew": [
+        "ex-ana",
+        "ex-ben",
+        "ex-mia"
+      ],
+      "roles": [
+        "Lead",
+        "Engineering",
+        "Design"
+      ],
+      "goal": "Cut checkout from six steps to one so more carts become orders.",
+      "phase": 2,
+      "health": "risk",
+      "exists": true,
+      "objectiveText": "Make paying for an order effortless on mobile",
+      "next": {
+        "label": "Go / no-go review",
+        "date": "2026-12-04"
+      },
+      "decisionNote": "Needs the mobile abandonment baseline and one more usability round before the review.",
+      "krs": [
+        {
+          "n": "Cart to order conversion",
+          "base": 58,
+          "now": 59.5,
+          "target": 66,
+          "u": "%",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-10-19",
+              "v": 58.4,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-26",
+              "v": 58.8,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-02",
+              "v": 59.1,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 59.5,
+              "conf": "on",
+              "note": "Small lift from the saved-card fix",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        },
+        {
+          "n": "Mobile checkout abandonment",
+          "base": null,
+          "now": null,
+          "target": 35,
+          "u": "%",
+          "until": "2026-12-31",
+          "history": []
+        },
+        {
+          "n": "Median time to pay",
+          "base": 220,
+          "now": 205,
+          "target": 90,
+          "u": "s",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-10-19",
+              "v": 216.3,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-26",
+              "v": 212.5,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-02",
+              "v": 208.8,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 205,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        }
+      ],
+      "status": {
+        "problem": "ready",
+        "customer": "ready",
+        "size": "data",
+        "alternatives": "ready",
+        "whyus": "draft",
+        "whynow": "ready",
+        "gtm": "missing",
+        "metrics": "data",
+        "factors": "draft",
+        "rec": "missing",
+        "solution": "draft",
+        "rules": "info",
+        "value": "ready",
+        "usability": "validation",
+        "feasibility": "ready",
+        "viability": "info",
+        "tldr": "draft",
+        "background": "ready",
+        "goals": "ready",
+        "nfr": "validation",
+        "scope": "draft",
+        "launch": "draft",
+        "legal": "info",
+        "stories": "draft",
+        "reqs": "draft",
+        "deps": "draft",
+        "questions": "info",
+        "decisions": "ready",
+        "approvals": "info"
+      },
+      "text": {
+        "problem": "Checkout has six screens. 42% of people who start checkout leave before paying, and on mobile it's worse.",
+        "customer": "Returning shoppers on mobile, 61% of checkout starts.",
+        "alternatives": "Competitors moved to single-page checkout. Today's workaround is calling support to place the order.",
+        "whynow": "The payments migration in Q1 already touches every checkout screen, so we rebuild once.",
+        "whyus": "We already store addresses and payment methods for 80% of returning customers.",
+        "factors": "Payments migration lands on time. Tax service supports a single quote call.",
+        "solution": "One screen with address, delivery and payment stacked, pre-filled for returning customers.",
+        "value": "Prototype test: 6 of 6 participants preferred it to today's flow.",
+        "feasibility": "Spike done: front end 6 weeks, tax quote change 2 weeks.",
+        "tldr": "Mobile checkout loses 42% of shoppers across six screens. We'll replace it with one pre-filled screen, piloting express pay first. Success is cart-to-order conversion from 58% to 66% by year end.",
+        "background": "Checkout was last redesigned in 2021 for desktop. Mobile is now 61% of checkout starts, and the payments migration in Q1 touches every screen anyway.",
+        "goals": "Goals: fewer steps, faster payment, the same fraud rate.\nNon-goals: new payment providers, changes to the cart, desktop layout.",
+        "nfr": "Checkout screen loads in under 1.5 s on 4G at p75. WCAG 2.2 AA. Copy in English, French (Quebec) and Spanish (US).",
+        "scope": "In: one-page checkout for returning customers on mobile, express pay pilot.\nLater: guest checkout on one page.\nOut: desktop redesign.",
+        "launch": "Express pay pilot in two cities behind a flag, then 10%, 50%, 100% of mobile over four weeks. Roll back by turning the flag off.",
+        "legal": "Terms acceptance placement needs legal sign-off. Card data stays with the payment provider."
+      },
+      "need": {
+        "size": "Confirm abandonment by device from analytics",
+        "rules": "Legal to confirm terms acceptance can sit on the same screen",
+        "viability": "Finance review of the express-pay fee",
+        "usability": "Second round after the date picker redesign"
+      },
+      "timeline": [
+        {
+          "date": "2026-10-14",
+          "label": "Kickoff",
+          "state": "done"
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Problem validated",
+          "state": "done"
+        },
+        {
+          "date": "2026-11-20",
+          "label": "Usability round 1",
+          "state": "done"
+        },
+        {
+          "date": "2026-12-04",
+          "label": "Go / no-go review",
+          "state": "next",
+          "confluence": "interim"
+        },
+        {
+          "date": "2027-01-12",
+          "label": "Build starts",
+          "state": "planned",
+          "jira": "NAM-400"
+        },
+        {
+          "date": "2027-03-21",
+          "label": "Launch review",
+          "state": "planned"
+        }
+      ],
+      "journey": {
+        "today": [
+          {
+            "t": "Review cart",
+            "s": ""
+          },
+          {
+            "t": "Enter address",
+            "s": ""
+          },
+          {
+            "t": "Pick delivery",
+            "s": "Can't see dates until the next step"
+          },
+          {
+            "t": "Enter payment",
+            "s": "Card form resets on error"
+          },
+          {
+            "t": "Review order",
+            "s": "Repeats everything just entered"
+          },
+          {
+            "t": "Confirmation",
+            "s": ""
+          }
+        ],
+        "vision": [
+          {
+            "t": "Review cart",
+            "s": ""
+          },
+          {
+            "t": "Check pre-filled details",
+            "s": "Address, delivery and card on one screen"
+          },
+          {
+            "t": "Pay",
+            "s": "Express pay or saved card"
+          },
+          {
+            "t": "Confirmation",
+            "s": "With delivery date"
+          }
+        ]
+      },
+      "files": [
+        {
+          "name": "Usability round 1 notes",
+          "kind": "doc",
+          "label": "Google Doc",
+          "ctx": "Evidence"
+        },
+        {
+          "name": "Checkout journey",
+          "kind": "board",
+          "label": "FigJam",
+          "ctx": "Today"
+        }
+      ],
+      "releases": [
+        {
+          "id": "ex-r1",
+          "name": "Express pay pilot",
+          "date": "2027-02-24",
+          "scope": "Express pay for returning customers in two cities",
+          "status": "planned",
+          "jira": "NAM-412",
+          "confluence": "interim"
+        },
+        {
+          "id": "ex-r2",
+          "name": "One-page checkout",
+          "date": "2027-04-20",
+          "scope": "Address, delivery and payment on one screen for everyone on mobile",
+          "status": "planned",
+          "jira": "NAM-418",
+          "confluence": "interim"
+        },
+        {
+          "id": "ex-r3",
+          "name": "Guest checkout on one page",
+          "date": "2027-07-14",
+          "scope": "First-time buyers get the same single screen",
+          "status": "planned",
+          "jira": "interim",
+          "confluence": "interim"
+        }
+      ],
+      "learning": [
+        {
+          "id": "ex-l1",
+          "question": "Can people find the delivery date on a single screen?",
+          "risk": "usability",
+          "method": "Usability round 2 with 6 customers",
+          "signal": "5 of 6 pick a date without help",
+          "owner": "Mia",
+          "due": "2026-12-01",
+          "status": "running",
+          "result": ""
+        },
+        {
+          "id": "ex-l2",
+          "question": "Do returning customers trust express pay?",
+          "risk": "value",
+          "method": "Fake-door button on the cart",
+          "signal": "8% of returning customers tap it",
+          "owner": "Ana",
+          "due": "2026-12-21",
+          "status": "planned",
+          "result": ""
+        },
+        {
+          "id": "ex-l3",
+          "question": "Can the tax service return one quote per order?",
+          "risk": "feasibility",
+          "method": "Engineering spike",
+          "signal": "Quote in under 300 ms",
+          "owner": "Ben",
+          "due": "2026-11-09",
+          "status": "learned",
+          "result": "Yes, 180 ms median. The change ships in January."
+        }
+      ],
+      "expectInternal": "Support and finance get the new flow two weeks before the express pay pilot. Nothing changes for sales.",
+      "expectExternal": "Returning customers on mobile see one checkout screen from the spring release, with express pay in two pilot cities first.",
+      "biz": [
+        {
+          "id": "ex-b1",
+          "audience": "internal",
+          "group": "Customer support",
+          "expect": "Training on the new flow and updated help macros",
+          "release": "ex-r1",
+          "date": "2027-02-09",
+          "owner": "Jo",
+          "status": "doing"
+        },
+        {
+          "id": "ex-b2",
+          "audience": "internal",
+          "group": "Finance",
+          "expect": "Express pay fee reporting in the monthly close",
+          "release": "ex-r1",
+          "date": "2027-02-19",
+          "owner": "Sam",
+          "status": "todo"
+        },
+        {
+          "id": "ex-b3",
+          "audience": "external",
+          "group": "Returning customers",
+          "expect": "One screen with saved address and card; a short in-app note explains the change",
+          "release": "ex-r2",
+          "date": "2027-04-20",
+          "owner": "Ana",
+          "status": "todo"
+        },
+        {
+          "id": "ex-b4",
+          "audience": "external",
+          "group": "Payment partner",
+          "expect": "Volume forecast for the express pay pilot",
+          "release": "ex-r1",
+          "date": "2027-01-20",
+          "owner": "Ben",
+          "status": "ready"
+        }
+      ],
+      "jira": "interim",
+      "confluence": "interim",
+      "stories": [
+        {
+          "id": "st1",
+          "as": "returning shopper on my phone",
+          "want": "pay with my saved card on one screen",
+          "so": "checkout takes seconds, not minutes",
+          "priority": "must",
+          "jira": "NAM-420"
+        },
+        {
+          "id": "st2",
+          "as": "first-time buyer",
+          "want": "check out without an account",
+          "so": "I don't abandon the cart",
+          "priority": "should"
+        },
+        {
+          "id": "st3",
+          "as": "support agent",
+          "want": "see which checkout version a customer used",
+          "so": "I can help them faster",
+          "priority": "could"
+        }
+      ],
+      "reqs": [
+        {
+          "id": "rq1",
+          "text": "Address, delivery date and payment on one screen, pre-filled for returning customers",
+          "priority": "must",
+          "state": "agreed",
+          "criteria": "Given a returning customer with a saved card, when they open checkout, then all three are filled and Pay is enabled",
+          "jira": "NAM-421"
+        },
+        {
+          "id": "rq2",
+          "text": "Delivery dates visible before payment",
+          "priority": "must",
+          "state": "agreed",
+          "criteria": ""
+        },
+        {
+          "id": "rq3",
+          "text": "Express pay button for eligible customers",
+          "priority": "should",
+          "state": "proposed",
+          "criteria": ""
+        },
+        {
+          "id": "rq4",
+          "text": "Order summary collapsible on small screens",
+          "priority": "could",
+          "state": "proposed",
+          "criteria": ""
+        }
+      ],
+      "deps": [
+        {
+          "id": "dp1",
+          "what": "Tax service returns one quote per order",
+          "team": "Tax platform",
+          "due": "2026-12-31",
+          "state": "committed",
+          "jira": "TAX-88"
+        },
+        {
+          "id": "dp2",
+          "what": "Express pay fee agreement",
+          "team": "Finance and payment partner",
+          "due": "2027-01-20",
+          "state": "open"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "q": "Can terms acceptance sit on the same screen as Pay?",
+          "owner": "Legal",
+          "due": "2026-11-28",
+          "state": "open",
+          "answer": ""
+        },
+        {
+          "id": "q2",
+          "q": "Do we keep guest checkout in the first release?",
+          "owner": "Ana",
+          "due": "2026-12-03",
+          "state": "open",
+          "answer": ""
+        }
+      ],
+      "decisions": [
+        {
+          "id": "dc1",
+          "what": "Pilot express pay in two cities before national rollout",
+          "why": "Limits fee exposure while we learn adoption",
+          "who": "Ana, Ben",
+          "date": "2026-11-11"
+        },
+        {
+          "id": "dc2",
+          "what": "Mobile first; desktop keeps today's flow this year",
+          "why": "61% of starts are mobile",
+          "who": "Leadership review",
+          "date": "2026-11-01"
+        }
+      ],
+      "approvals": [
+        {
+          "id": "ap1",
+          "role": "Product",
+          "name": "Ana Ruiz",
+          "state": "approved",
+          "date": "2026-11-16"
+        },
+        {
+          "id": "ap2",
+          "role": "Engineering",
+          "name": "Ben Okafor",
+          "state": "approved",
+          "date": "2026-11-17"
+        },
+        {
+          "id": "ap3",
+          "role": "Design",
+          "name": "Mia Chen",
+          "state": "changes",
+          "note": "Date picker redesign first"
+        },
+        {
+          "id": "ap4",
+          "role": "Legal",
+          "name": "",
+          "state": "pending"
+        }
+      ],
+      "example": true,
+      "createdAt": "2026-11-01T23:16:02.489Z",
+      "order": 0
+    },
+    "ex-onboarding": {
+      "screens": {
+        "today": [],
+        "vision": []
+      },
+      "prototypeUrl": "",
+      "id": "ex-onboarding",
+      "demo": "onboarding",
+      "name": "Self-serve onboarding",
+      "team": "Growth",
+      "owner": "ex-mia",
+      "crew": [
+        "ex-mia",
+        "ex-sam"
+      ],
+      "roles": [
+        "Lead",
+        "Engineering"
+      ],
+      "goal": "Let new businesses set themselves up without a sales call.",
+      "phase": 1,
+      "health": "on",
+      "exists": false,
+      "objectiveText": "Get new businesses to their first order in their first week",
+      "next": {
+        "label": "Opportunity review",
+        "date": "2026-12-11"
+      },
+      "decisionNote": "On track. Sizing and metrics are the last gaps before the review.",
+      "krs": [
+        {
+          "n": "Sign-up to first order within 7 days",
+          "base": 24,
+          "now": 25,
+          "target": 45,
+          "u": "%",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-11-02",
+              "v": 24.3,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 24.7,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-16",
+              "v": 25,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        },
+        {
+          "n": "Setup calls booked per month",
+          "base": 300,
+          "now": 296,
+          "target": 60,
+          "u": "",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-11-02",
+              "v": 298.7,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 297.3,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-16",
+              "v": 296,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        }
+      ],
+      "status": {
+        "problem": "ready",
+        "customer": "ready",
+        "size": "draft",
+        "alternatives": "draft",
+        "whynow": "draft",
+        "metrics": "draft",
+        "solution": "draft",
+        "value": "validation"
+      },
+      "text": {
+        "problem": "38% of sign-ups never place a first order. Setup needs a sales call that takes 4 days to book.",
+        "customer": "Small businesses with fewer than 20 employees who sign up on the website.",
+        "size": "If half of today's drop-offs activate, that is about 1,200 more active accounts a year.",
+        "solution": "A three-step guided setup that ends with a first order."
+      },
+      "need": {
+        "value": "Fake-door test on the sign-up page"
+      },
+      "timeline": [
+        {
+          "date": "2026-11-03",
+          "label": "Kickoff",
+          "state": "done"
+        },
+        {
+          "date": "2026-12-11",
+          "label": "Opportunity review",
+          "state": "next"
+        },
+        {
+          "date": "2027-01-30",
+          "label": "Prototype test",
+          "state": "planned"
+        }
+      ],
+      "journey": {
+        "today": [],
+        "vision": [
+          {
+            "t": "Create account",
+            "s": ""
+          },
+          {
+            "t": "Tell us about your business",
+            "s": "Two questions"
+          },
+          {
+            "t": "Import products",
+            "s": "From a spreadsheet or catalog"
+          },
+          {
+            "t": "Place a first order",
+            "s": "Guided, with a sample"
+          }
+        ]
+      },
+      "files": [],
+      "releases": [
+        {
+          "id": "ex-r4",
+          "name": "Guided setup beta",
+          "date": "2027-04-30",
+          "scope": "Three-step setup for new small businesses",
+          "status": "planned"
+        }
+      ],
+      "learning": [
+        {
+          "id": "ex-l4",
+          "question": "Would new businesses set up on their own if they could?",
+          "risk": "value",
+          "method": "Fake-door test on the sign-up page",
+          "signal": "30% choose self-serve over booking a call",
+          "owner": "Mia",
+          "due": "2026-12-16",
+          "status": "planned",
+          "result": ""
+        },
+        {
+          "id": "ex-l5",
+          "question": "What stops people after they create an account?",
+          "risk": "usability",
+          "method": "Interviews with 9 recent sign-ups",
+          "signal": "",
+          "owner": "Mia",
+          "due": "2026-11-19",
+          "status": "learned",
+          "result": "Nobody knows the next step. They expect a checklist."
+        }
+      ],
+      "example": true,
+      "createdAt": "2026-11-01T23:16:02.489Z",
+      "order": 1
+    },
+    "ex-account": {
+      "screens": {
+        "today": [],
+        "vision": []
+      },
+      "prototypeUrl": "",
+      "id": "ex-account",
+      "name": "Unified account hub",
+      "team": "Platform",
+      "owner": "ex-ben",
+      "crew": [
+        "ex-ben",
+        "ex-jo"
+      ],
+      "roles": [
+        "Lead",
+        "Engineering"
+      ],
+      "goal": "Bring orders, billing and settings into one place customers can find.",
+      "phase": 3,
+      "health": "on",
+      "exists": true,
+      "objectiveText": "Customers solve account issues without calling us",
+      "next": {
+        "label": "Beta to 5% of customers",
+        "date": "2027-01-20"
+      },
+      "decisionNote": "Approved Oct 28. Build is on schedule.",
+      "krs": [
+        {
+          "n": "Account support tickets per month",
+          "base": 1900,
+          "now": 1750,
+          "target": 1200,
+          "u": "",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-09-28",
+              "v": 1881.3,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-05",
+              "v": 1862.5,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-12",
+              "v": 1843.8,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-19",
+              "v": 1825,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-26",
+              "v": 1806.3,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-02",
+              "v": 1787.5,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 1768.8,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-16",
+              "v": 1750,
+              "conf": "on",
+              "note": "Invoice download link added to emails",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        },
+        {
+          "n": "Invoices downloaded without help",
+          "base": 42,
+          "now": 51,
+          "target": 80,
+          "u": "%",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-09-28",
+              "v": 43.1,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-05",
+              "v": 44.3,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-12",
+              "v": 45.4,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-19",
+              "v": 46.5,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-10-26",
+              "v": 47.6,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-02",
+              "v": 48.8,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 49.9,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-16",
+              "v": 51,
+              "conf": "on",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        }
+      ],
+      "status": {
+        "tldr": "ready",
+        "background": "ready",
+        "goals": "ready",
+        "problem": "ready",
+        "customer": "ready",
+        "size": "ready",
+        "alternatives": "ready",
+        "whyus": "ready",
+        "whynow": "ready",
+        "gtm": "ready",
+        "metrics": "ready",
+        "factors": "ready",
+        "rec": "ready",
+        "stories": "ready",
+        "reqs": "ready",
+        "nfr": "ready",
+        "scope": "ready",
+        "solution": "ready",
+        "ux": "ready",
+        "rules": "ready",
+        "analytics": "ready",
+        "deps": "ready",
+        "launch": "ready",
+        "ops": "ready",
+        "legal": "ready",
+        "value": "ready",
+        "usability": "ready",
+        "feasibility": "ready",
+        "viability": "ready",
+        "questions": "ready",
+        "decisions": "ready",
+        "approvals": "ready"
+      },
+      "text": {
+        "problem": "Account settings live in four places. 'Where are my invoices' is the top support question."
+      },
+      "need": {},
+      "timeline": [
+        {
+          "date": "2026-08-04",
+          "label": "Kickoff",
+          "state": "done"
+        },
+        {
+          "date": "2026-10-28",
+          "label": "Approved",
+          "state": "done"
+        },
+        {
+          "date": "2027-01-20",
+          "label": "Beta to 5%",
+          "state": "next"
+        }
+      ],
+      "journey": {
+        "today": [],
+        "vision": []
+      },
+      "files": [],
+      "releases": [
+        {
+          "id": "ex-r5",
+          "name": "Orders and billing beta",
+          "date": "2027-01-20",
+          "scope": "Orders and invoices in one place for 5% of customers",
+          "status": "building"
+        },
+        {
+          "id": "ex-r6",
+          "name": "Account hub for everyone",
+          "date": "2027-03-31",
+          "scope": "All customers; old account pages redirect",
+          "status": "planned"
+        },
+        {
+          "id": "ex-r7",
+          "name": "Self-serve refunds",
+          "date": "2027-06-29",
+          "scope": "Request and track refunds without calling",
+          "status": "planned"
+        }
+      ],
+      "learning": [
+        {
+          "id": "ex-l6",
+          "question": "Can customers find invoices in the new hub?",
+          "risk": "usability",
+          "method": "Tree test with 40 customers",
+          "signal": "80% find it in one try",
+          "owner": "Ben",
+          "due": "2026-10-22",
+          "status": "learned",
+          "result": "86% found it first try."
+        }
+      ],
+      "expectInternal": "Support sees fewer invoice tickets from the beta. Sales can demo the hub from January.",
+      "expectExternal": "Customers in the beta get one account page for orders, billing and settings. Old links keep working.",
+      "biz": [
+        {
+          "id": "ex-b5",
+          "audience": "internal",
+          "group": "Customer support",
+          "expect": "Macros point to the new account hub",
+          "release": "ex-r5",
+          "date": "2027-01-10",
+          "owner": "Jo",
+          "status": "ready"
+        },
+        {
+          "id": "ex-b6",
+          "audience": "internal",
+          "group": "Sales",
+          "expect": "A demo account with the hub",
+          "release": "ex-r6",
+          "date": "2027-03-21",
+          "owner": "Leo",
+          "status": "doing"
+        },
+        {
+          "id": "ex-b7",
+          "audience": "external",
+          "group": "Beta customers",
+          "expect": "Invoices and orders in one place; an email explains what moved",
+          "release": "ex-r5",
+          "date": "2027-01-20",
+          "owner": "Ben",
+          "status": "doing"
+        }
+      ],
+      "jira": "interim",
+      "confluence": "interim",
+      "example": true,
+      "createdAt": "2026-11-01T23:16:02.489Z",
+      "order": 2
+    },
+    "ex-reorder": {
+      "screens": {
+        "today": [],
+        "vision": []
+      },
+      "prototypeUrl": "",
+      "id": "ex-reorder",
+      "name": "Smart reorder",
+      "team": "Commerce",
+      "owner": "ex-leo",
+      "crew": [
+        "ex-leo"
+      ],
+      "roles": [
+        "Lead"
+      ],
+      "goal": "Predict what a customer needs next and let them reorder in one tap.",
+      "phase": 0,
+      "health": "blocked",
+      "exists": false,
+      "objectiveText": "Make reordering a one-tap habit",
+      "next": {
+        "label": "Data access from analytics",
+        "date": "Waiting"
+      },
+      "decisionNote": "Blocked: can't size this until analytics grants access to order history.",
+      "krs": [
+        {
+          "n": "Repeat order rate",
+          "base": null,
+          "now": null,
+          "target": null,
+          "u": "%"
+        }
+      ],
+      "status": {
+        "problem": "draft",
+        "customer": "draft",
+        "size": "data",
+        "metrics": "data"
+      },
+      "text": {
+        "problem": "Customers who reorder search for the same products every time."
+      },
+      "need": {
+        "size": "Order history access from analytics"
+      },
+      "timeline": [
+        {
+          "date": "2026-11-01",
+          "label": "Kickoff",
+          "state": "done"
+        }
+      ],
+      "journey": {
+        "today": [],
+        "vision": []
+      },
+      "files": [],
+      "example": true,
+      "createdAt": "2026-11-01T23:16:02.489Z",
+      "order": 3
+    },
+    "ex-partners": {
+      "screens": {
+        "today": [],
+        "vision": []
+      },
+      "prototypeUrl": "",
+      "id": "ex-partners",
+      "name": "Partner portal",
+      "team": "Partnerships",
+      "owner": "ex-sam",
+      "crew": [
+        "ex-sam",
+        "ex-jo"
+      ],
+      "roles": [
+        "Lead",
+        "Engineering"
+      ],
+      "goal": "Give resellers their own place to onboard and manage customers.",
+      "phase": 1,
+      "health": "risk",
+      "exists": false,
+      "objectiveText": "Grow through resellers",
+      "next": {
+        "label": "Opportunity review",
+        "date": "2026-12-18"
+      },
+      "decisionNote": "At risk: no engineering estimate yet and legal hasn't reviewed reseller terms.",
+      "krs": [
+        {
+          "n": "Partner-sourced revenue",
+          "base": 4,
+          "now": 4,
+          "target": 12,
+          "u": "%",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-11-02",
+              "v": 4,
+              "conf": "risk",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 4,
+              "conf": "risk",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        },
+        {
+          "n": "Active reseller partners",
+          "base": 3,
+          "now": 3,
+          "target": 25,
+          "u": "",
+          "until": "2026-12-31",
+          "history": [
+            {
+              "w": "2026-11-02",
+              "v": 3,
+              "conf": "risk",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            },
+            {
+              "w": "2026-11-09",
+              "v": 3,
+              "conf": "risk",
+              "note": "",
+              "by": null,
+              "at": "2026-11-21T23:16:02.489Z"
+            }
+          ]
+        }
+      ],
+      "status": {
+        "problem": "ready",
+        "customer": "ready",
+        "size": "draft",
+        "whynow": "ready",
+        "factors": "info",
+        "feasibility": "info",
+        "viability": "info",
+        "value": "validation"
+      },
+      "text": {},
+      "need": {
+        "feasibility": "Engineering estimate",
+        "viability": "Legal review of reseller terms"
+      },
+      "timeline": [
+        {
+          "date": "2026-10-20",
+          "label": "Kickoff",
+          "state": "done"
+        },
+        {
+          "date": "2026-12-18",
+          "label": "Opportunity review",
+          "state": "next"
+        }
+      ],
+      "journey": {
+        "today": [],
+        "vision": []
+      },
+      "files": [],
+      "releases": [
+        {
+          "id": "ex-r8",
+          "name": "Reseller pilot portal",
+          "date": "2027-06-09",
+          "scope": "Three pilot resellers onboard and manage customers",
+          "status": "planned"
+        }
+      ],
+      "learning": [
+        {
+          "id": "ex-l7",
+          "question": "Will resellers pay for a portal or expect it free?",
+          "risk": "viability",
+          "method": "Pricing conversations with the 3 pilot resellers",
+          "signal": "2 of 3 accept a fee",
+          "owner": "Sam",
+          "due": "2026-12-11",
+          "status": "running",
+          "result": ""
+        }
+      ],
+      "example": true,
+      "createdAt": "2026-11-01T23:16:02.489Z",
+      "order": 4
+    }
+  },
+  "updates": {
+    "ex-checkout-ex": {
+      "id": "ex-checkout-ex",
+      "initiativeId": "ex-checkout",
+      "who": "ex-ana",
+      "text": "Usability round 1 done with 6 customers: everyone finished, but 3 missed the delivery date picker. Redesigning it this week.",
+      "health": "risk",
+      "at": "2026-11-21T18:28:02.489Z",
+      "example": true
+    },
+    "ex-onboarding-ex": {
+      "id": "ex-onboarding-ex",
+      "initiativeId": "ex-onboarding",
+      "who": "ex-mia",
+      "text": "Interviewed 9 recent sign-ups. Nobody knows what to do after creating an account.",
+      "health": "on",
+      "at": "2026-11-20T23:16:02.489Z",
+      "example": true
+    },
+    "ex-account-ex": {
+      "id": "ex-account-ex",
+      "initiativeId": "ex-account",
+      "who": "ex-ben",
+      "text": "Orders and billing tabs are done and in internal testing.",
+      "health": "on",
+      "at": "2026-11-18T23:16:02.489Z",
+      "example": true
+    },
+    "ex-reorder-ex": {
+      "id": "ex-reorder-ex",
+      "initiativeId": "ex-reorder",
+      "who": "ex-leo",
+      "text": "Access request for order history is still pending with analytics.",
+      "health": "blocked",
+      "at": "2026-11-14T23:16:02.489Z",
+      "example": true
+    },
+    "ex-partners-ex": {
+      "id": "ex-partners-ex",
+      "initiativeId": "ex-partners",
+      "who": "ex-sam",
+      "text": "Three resellers agreed to pilot. Waiting on an engineering estimate.",
+      "health": "risk",
+      "at": "2026-11-18T23:16:02.489Z",
+      "example": true
+    }
+  },
+  "comments": {
+    "ex-checkout-c-pk13ylea": {
+      "id": "ex-checkout-c-pk13ylea",
+      "initiativeId": "ex-checkout",
+      "who": "ex-mia",
+      "text": "Can we keep guest checkout on the same screen? Half of first-time buyers use it.",
+      "ctx": "Solution & prototype",
+      "at": "2026-11-21T20:52:02.489Z",
+      "example": true
+    },
+    "ex-checkout-c-xt5ox06q": {
+      "id": "ex-checkout-c-xt5ox06q",
+      "initiativeId": "ex-checkout",
+      "who": "ex-ben",
+      "text": "Tax quote change is confirmed for January, so the build start date holds.",
+      "ctx": "Critical success factors",
+      "at": "2026-11-20T23:16:02.489Z",
+      "example": true
+    }
+  },
+  "nodes": {
+    "ex-n-home": {
+      "id": "ex-n-home",
+      "side": "today",
+      "name": "Home",
+      "path": "/",
+      "change": "keep",
+      "parent": "",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 0,
+      "example": true
+    },
+    "ex-n-shop": {
+      "id": "ex-n-shop",
+      "side": "today",
+      "name": "Shop",
+      "path": "/shop",
+      "change": "keep",
+      "parent": "ex-n-home",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 1,
+      "example": true
+    },
+    "ex-n-cart": {
+      "id": "ex-n-cart",
+      "side": "today",
+      "name": "Cart",
+      "path": "/cart",
+      "change": "keep",
+      "parent": "ex-n-home",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 2,
+      "example": true
+    },
+    "ex-n-co": {
+      "id": "ex-n-co",
+      "side": "today",
+      "name": "Checkout",
+      "path": "/checkout",
+      "change": "keep",
+      "parent": "ex-n-cart",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 3,
+      "example": true
+    },
+    "ex-n-addr": {
+      "id": "ex-n-addr",
+      "side": "today",
+      "name": "Shipping address",
+      "path": "/checkout/address",
+      "change": "removed",
+      "parent": "ex-n-co",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 4,
+      "example": true
+    },
+    "ex-n-del": {
+      "id": "ex-n-del",
+      "side": "today",
+      "name": "Delivery options",
+      "path": "/checkout/delivery",
+      "change": "removed",
+      "parent": "ex-n-co",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 5,
+      "example": true
+    },
+    "ex-n-pay": {
+      "id": "ex-n-pay",
+      "side": "today",
+      "name": "Payment",
+      "path": "/checkout/payment",
+      "change": "removed",
+      "parent": "ex-n-co",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 6,
+      "example": true
+    },
+    "ex-n-rev": {
+      "id": "ex-n-rev",
+      "side": "today",
+      "name": "Review order",
+      "path": "/checkout/review",
+      "change": "removed",
+      "parent": "ex-n-co",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 7,
+      "example": true
+    },
+    "ex-n-conf": {
+      "id": "ex-n-conf",
+      "side": "today",
+      "name": "Confirmation",
+      "path": "/checkout/done",
+      "change": "keep",
+      "parent": "ex-n-co",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 8,
+      "example": true
+    },
+    "ex-n-orders": {
+      "id": "ex-n-orders",
+      "side": "today",
+      "name": "My orders",
+      "path": "/orders",
+      "change": "removed",
+      "parent": "ex-n-home",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 9,
+      "example": true
+    },
+    "ex-n-settings": {
+      "id": "ex-n-settings",
+      "side": "today",
+      "name": "Settings",
+      "path": "/settings",
+      "change": "removed",
+      "parent": "ex-n-home",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 10,
+      "example": true
+    },
+    "ex-n-help": {
+      "id": "ex-n-help",
+      "side": "today",
+      "name": "Help center",
+      "path": "help.example.com",
+      "change": "keep",
+      "parent": "ex-n-home",
+      "type": "external",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 11,
+      "example": true
+    },
+    "ex-v-home": {
+      "id": "ex-v-home",
+      "side": "vision",
+      "name": "Home",
+      "path": "/",
+      "change": "improved",
+      "parent": "",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 12,
+      "example": true
+    },
+    "ex-v-shop": {
+      "id": "ex-v-shop",
+      "side": "vision",
+      "name": "Shop",
+      "path": "/shop",
+      "change": "unchanged",
+      "parent": "ex-v-home",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 13,
+      "example": true
+    },
+    "ex-v-reo": {
+      "id": "ex-v-reo",
+      "side": "vision",
+      "name": "Reorder",
+      "path": "/shop#reorder",
+      "change": "new",
+      "parent": "ex-v-shop",
+      "type": "state",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-reorder"
+      ],
+      "order": 14,
+      "example": true
+    },
+    "ex-v-cart": {
+      "id": "ex-v-cart",
+      "side": "vision",
+      "name": "Cart",
+      "path": "/cart",
+      "change": "unchanged",
+      "parent": "ex-v-home",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [],
+      "order": 15,
+      "example": true
+    },
+    "ex-v-co": {
+      "id": "ex-v-co",
+      "side": "vision",
+      "name": "Checkout",
+      "path": "/checkout",
+      "change": "improved",
+      "parent": "ex-v-cart",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 16,
+      "example": true
+    },
+    "ex-v-exp": {
+      "id": "ex-v-exp",
+      "side": "vision",
+      "name": "Express pay",
+      "path": "/checkout#express",
+      "change": "new",
+      "parent": "ex-v-co",
+      "type": "modal",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 17,
+      "example": true
+    },
+    "ex-v-date": {
+      "id": "ex-v-date",
+      "side": "vision",
+      "name": "Delivery date picker",
+      "path": "/checkout#date",
+      "change": "new",
+      "parent": "ex-v-co",
+      "type": "modal",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 18,
+      "example": true
+    },
+    "ex-v-conf": {
+      "id": "ex-v-conf",
+      "side": "vision",
+      "name": "Confirmation",
+      "path": "/checkout/done",
+      "change": "improved",
+      "parent": "ex-v-co",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "order": 19,
+      "example": true
+    },
+    "ex-v-acc": {
+      "id": "ex-v-acc",
+      "side": "vision",
+      "name": "Account",
+      "path": "/account",
+      "change": "new",
+      "parent": "ex-v-home",
+      "type": "area",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 20,
+      "example": true
+    },
+    "ex-v-ord": {
+      "id": "ex-v-ord",
+      "side": "vision",
+      "name": "Orders",
+      "path": "/account/orders",
+      "change": "improved",
+      "parent": "ex-v-acc",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 21,
+      "example": true
+    },
+    "ex-v-bill": {
+      "id": "ex-v-bill",
+      "side": "vision",
+      "name": "Billing and invoices",
+      "path": "/account/billing",
+      "change": "new",
+      "parent": "ex-v-acc",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 22,
+      "example": true
+    },
+    "ex-v-ref": {
+      "id": "ex-v-ref",
+      "side": "vision",
+      "name": "Refunds",
+      "path": "/account/refunds",
+      "change": "new",
+      "parent": "ex-v-acc",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 23,
+      "example": true
+    },
+    "ex-v-set": {
+      "id": "ex-v-set",
+      "side": "vision",
+      "name": "Settings",
+      "path": "/account/settings",
+      "change": "improved",
+      "parent": "ex-v-acc",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-account"
+      ],
+      "order": 24,
+      "example": true
+    },
+    "ex-v-setup": {
+      "id": "ex-v-setup",
+      "side": "vision",
+      "name": "Setup",
+      "path": "/setup",
+      "change": "new",
+      "parent": "ex-v-home",
+      "type": "area",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-onboarding"
+      ],
+      "order": 25,
+      "example": true
+    },
+    "ex-v-s1": {
+      "id": "ex-v-s1",
+      "side": "vision",
+      "name": "About your business",
+      "path": "/setup/business",
+      "change": "new",
+      "parent": "ex-v-setup",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-onboarding"
+      ],
+      "order": 26,
+      "example": true
+    },
+    "ex-v-s2": {
+      "id": "ex-v-s2",
+      "side": "vision",
+      "name": "Import products",
+      "path": "/setup/products",
+      "change": "new",
+      "parent": "ex-v-setup",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-onboarding"
+      ],
+      "order": 27,
+      "example": true
+    },
+    "ex-v-s3": {
+      "id": "ex-v-s3",
+      "side": "vision",
+      "name": "First order",
+      "path": "/setup/first-order",
+      "change": "new",
+      "parent": "ex-v-setup",
+      "type": "page",
+      "platform": "both",
+      "notes": "",
+      "initiatives": [
+        "ex-onboarding"
+      ],
+      "order": 28,
+      "example": true
+    },
+    "ex-v-partners": {
+      "id": "ex-v-partners",
+      "side": "vision",
+      "name": "Partner portal",
+      "path": "partners.example.com",
+      "change": "new",
+      "parent": "",
+      "type": "area",
+      "platform": "web",
+      "notes": "",
+      "initiatives": [
+        "ex-partners"
+      ],
+      "order": 29,
+      "example": true
+    },
+    "ex-v-p1": {
+      "id": "ex-v-p1",
+      "side": "vision",
+      "name": "Customers",
+      "path": "/customers",
+      "change": "new",
+      "parent": "ex-v-partners",
+      "type": "page",
+      "platform": "web",
+      "notes": "",
+      "initiatives": [
+        "ex-partners"
+      ],
+      "order": 30,
+      "example": true
+    },
+    "ex-v-p2": {
+      "id": "ex-v-p2",
+      "side": "vision",
+      "name": "Commissions",
+      "path": "/commissions",
+      "change": "new",
+      "parent": "ex-v-partners",
+      "type": "page",
+      "platform": "web",
+      "notes": "",
+      "initiatives": [
+        "ex-partners"
+      ],
+      "order": 31,
+      "example": true
+    },
+    "ex-f-co": {
+      "id": "ex-f-co",
+      "kind": "flow",
+      "side": "vision",
+      "name": "Pay for an order",
+      "notes": "Returning shopper on mobile",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "steps": [
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-v-cart"
+        },
+        {
+          "t": "",
+          "s": "Address, date and card pre-filled",
+          "node": "ex-v-co"
+        },
+        {
+          "t": "",
+          "s": "Optional",
+          "node": "ex-v-exp"
+        },
+        {
+          "t": "",
+          "s": "With delivery date",
+          "node": "ex-v-conf"
+        }
+      ],
+      "order": 32,
+      "example": true
+    },
+    "ex-f-co-t": {
+      "id": "ex-f-co-t",
+      "kind": "flow",
+      "side": "today",
+      "name": "Pay for an order",
+      "notes": "Returning shopper on mobile",
+      "initiatives": [
+        "ex-checkout"
+      ],
+      "steps": [
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-n-cart"
+        },
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-n-addr"
+        },
+        {
+          "t": "",
+          "s": "Can't see dates until here",
+          "node": "ex-n-del"
+        },
+        {
+          "t": "",
+          "s": "Card form resets on error",
+          "node": "ex-n-pay"
+        },
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-n-rev"
+        },
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-n-conf"
+        }
+      ],
+      "order": 33,
+      "example": true
+    },
+    "ex-f-setup": {
+      "id": "ex-f-setup",
+      "kind": "flow",
+      "side": "vision",
+      "name": "Set up a new business",
+      "notes": "New small business, first visit",
+      "initiatives": [
+        "ex-onboarding"
+      ],
+      "steps": [
+        {
+          "t": "",
+          "s": "Sign up",
+          "node": "ex-v-home"
+        },
+        {
+          "t": "",
+          "s": "Two questions",
+          "node": "ex-v-s1"
+        },
+        {
+          "t": "",
+          "s": "From a spreadsheet",
+          "node": "ex-v-s2"
+        },
+        {
+          "t": "",
+          "s": "Guided, with a sample",
+          "node": "ex-v-s3"
+        }
+      ],
+      "order": 34,
+      "example": true
+    },
+    "ex-f-inv": {
+      "id": "ex-f-inv",
+      "kind": "flow",
+      "side": "vision",
+      "name": "Download an invoice",
+      "notes": "Customer finance contact",
+      "initiatives": [
+        "ex-account"
+      ],
+      "steps": [
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-v-home"
+        },
+        {
+          "t": "",
+          "s": "",
+          "node": "ex-v-acc"
+        },
+        {
+          "t": "",
+          "s": "Filter by month, download PDF",
+          "node": "ex-v-bill"
+        }
+      ],
+      "order": 35,
+      "example": true
+    }
+  }
+}
